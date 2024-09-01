@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+    </style>
+    <link rel="stylesheet" href="CE_parks_style.css">
+    <link rel="stylesheet" href="CE_parks_style2.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="topnav">
+        <div class="nav">
+            <a href="#" class="logo">
+                <img src="logo2.png" alt="">
+            </a>
+            <a href="index.html" class = 'navbarButtons' style="margin-left: 210px;" style="margin-right: 0px;">Home</a>
+            <a href="#reviews" class = 'navbarButtons' style="margin-left: 50px;" style="margin-right: 80px;">Reviews</a>
+            <a href="#contact" class = 'navbarButtons' style="margin-left: 41px;" style="margin-right: 20px;">Contact Us</a>
+        </div>
+        <div class="topnav-right">
+            <a href="#ina" class = 'navbarButtons'>INR</a>
+            <a href="#"><button class = 'signUpBtn'>Sign up</button></a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div>
+            <!-- <a href="#back">←Back</a> -->
+            <button class= 'back-button' onclick = 'goToHP()'>←Back</button>
+        </div>
+        <div class="sq">
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>
+        <div class="container">
+            <h1 style = 'margin-top: 4rem'>ENTERTAINMENT</h1>
+            <h2 style = 'margin-top: -0.5rem'>PARKS NEAR YOU</h2>
+            <div class="search-bar">
+                <input style="border-radius: 0.5rem; padding: 0.2rem 0.3rem; margin-top: -2rem; border-color: rgb(54, 3, 65);" type="text" placeholder="Search">
+            </div>
+
+            <div id="outsideContainer">
+               
+            </div>
+
+
+
+
+            
+                <button class="add-button" style = 'margin-bottom: 5rem;'>+ Add Location</button>
+
+            <!-- now the middle part -->
+
+            <div class="container">
+                <div class="line"></div>
+                <div class="circle circle1"></div>
+                <div class="circle circle2"></div>
+                <div class="circle circle3"></div>
+                <!-- <div class="text">Reviews</div> -->
+                <a href="#" class="scroll-top">Scroll To Top</a>
+            </div>
+
+            <div>
+                <div class="info" style="background-image: url(CE_Pics2/victoria.webp);">
+                    <h1 style="margin-left: 26px;" id = 'parkHeading'>Park X</h1>
+                    <H2 class="imageGall">Image Gallery</H2>
+                    <h2 class="details">Details</h2>
+                    <h2 class="rev">Reviews</h2>
+                    <h1 class="par" id = parkDetail>
+                        The Victoria Memorial is an iconic marble building located in Kolkata, India, built between 1906 and 1921. It was
+                        constructed in honor of Queen Victoria, commemorating her 25-year reign over India. The design, conceived by Sir William
+                        Emerson, blends classical European architecture with Mughal elements, resulting in a stunning example of Indo-Saracenic
+                        revivalist style. The memorial is surrounded by lush gardens and houses a museum that displays an extensive collection
+                        of British colonial-era artifacts, paintings, and sculptures. Today, the Victoria Memorial stands as a symbol of
+                        Kolkata's rich historical and cultural heritage, attracting millions of visitors annually.
+                    </h1>
+                </div>
+                <div class="stars" style = 'display: block;'>
+                <h3 style="display: inline;">Overall:</h3>
+
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+
+
+
+
+
+
+                <div id = "Container">
+                    <div imgIndex = "0" class="images"></div>
+                    <div imgIndex = "1" class="images"></div>
+                    <div imgIndex = "2" class="images"></div>
+                    <div imgIndex = "3" class="images"></div>
+                    <p class = "names" nameIndex = "0">Name P</p>
+                    <p class = "names" nameIndex = "1">Name Q</p>
+                    <p class = "names" nameIndex = "2">Name R</p>
+                    <p class = "names" nameIndex = "3">Name S</p>
+                    <p class = 'star2'>★★★★★</p>
+                    <p class = "reviews" reviewIndex = "0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, vel cum accusantium nam, beatae, rerum esse perspiciatis culpa reiciendis voluptatum sed. Rem, earum libero. Quam, tenetur. Dolorum aspernatur ut laudantium. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem provident ipsam nam!</p>
+                    <p class = "reviews" reviewIndex = "1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, vel cum accusantium nam, beatae, rerum esse perspiciatis culpa reiciendis voluptatum sed. Rem, earum libero. Quam, tenetur. Dolorum aspernatur ut. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem provident ipsam nam!</p>
+                    <p class = "reviews" reviewIndex = "2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, vel cum accusantium nam, beatae, rerum esse perspiciatis culpa reiciendis voluptatum sed. Rem, earum libero. Quam, tenetur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem provident ipsam nam! </p>
+                    <p class = "reviews" reviewIndex = "3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem provident ipsam nam!</p>
+                    <button id = "next">></button>
+                    <button id = "prev"><</button>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- FOOTER---------------------------------------------------------------------------------------------- -->
+
+<div class = outerFooter-container>
+    <footer class="footer-container">
+        <div class="footer-section">
+            <h4>Download</h4>
+            <ul>
+                <li>Windows app</li>
+                <li>Mac app</li>
+                <li>Linux app</li>
+                <li>Desktop app</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Products</h4>
+            <ul>
+                <li>Web</li>
+                <li>App</li>
+                <li>Software</li>
+                <li>Ecommerce</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Get in touch</h4>
+            <div class="social-icons">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+    
+            </div>
+            <p>Subscribe</p>
+            <input type="email" placeholder="Enter email address">
+            <button id = "subButton">Subscribe</button>
+        </div>
+    </footer>
+    <div class="copyright">
+        ©2024 Glossy, All right reserved.
+    </div>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
+    </div>
+        <script src = 'SR_script.js'></script>
+    </body>
+    </html>
+
+    <script src = 'CE_parks_script.js'></script>
+    <script src="https://cdn.botpress.cloud/webchat/v2.1/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/f882f804-95c8-44f9-89af-5774c402807a/webchat/v2.1/config.js"></script>
+</body>
+
+</html>
