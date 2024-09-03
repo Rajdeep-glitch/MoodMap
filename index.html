@@ -174,7 +174,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             padding-bottom: 0px;
-            height: 37rem;
+            height: 42rem;
             margin-top: -4rem;
         }
         .container2 {
@@ -1045,6 +1045,152 @@ nav ul li a:active {
     transition: background-size 0.2s, background-position 0.2s;
 }
 
+/* mood based suggestion css */
+
+.moodContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#places-list button {
+    display: block;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+#map-popup.hidden {
+    display: none;
+}
+
+#map-popup {
+    margin-top: 20px;
+}
+#map-popup {
+    display: none;
+    margin: auto;
+    /* position: fixed;
+    top: 10%;
+    left: 25%; */
+    width: 40rem;
+    height: 20rem;
+    background: white;
+    border: 2px solid black;
+    z-index: 1000;
+    overflow: hidden;
+}
+#map-iframe {
+    width: 100%;
+    height: 100%;
+}
+.hidden {
+    display: none;
+}
+
+.moodPlacesContainer{
+    width: 60%;
+    background-color: white;
+    border: 0.2rem solid rgb(86, 6, 102);
+    margin: auto;
+    text-align: center;
+    padding: 2rem;
+    padding-top: 0;
+    border-radius: 0.8rem;
+    position: fixed;
+    top: 4.5rem;
+    left: 20%;
+    z-index: 1000;
+    display: none;
+    animation-name: pop;
+    animation-duration: 0.2s;
+}
+.popupButtonElement{
+    background-color: rgb(86, 6, 102) !important;
+    border-radius: 0.4rem;
+    color: white;
+    margin-bottom: 1rem !important;
+}
+.popupButtonElement:hover{
+    background-color: rgb(58, 2, 70) !important;
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}
+
+
+#places-list{
+    /* background-color: rgb(86, 6, 102); */
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    margin: auto;
+    /* padding-left: 15.9rem; */
+    justify-content: center;
+}
+
+.moodPlacesInputContainer{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 2rem;
+    margin-left: -8rem;
+    margin-bottom: -2rem;
+    padding-bottom: 0;
+}
+.moodPlacesInputContainer select{
+    font-size: 1.5rem;
+    padding: 0.2rem 0.5rem;
+}
+
+#moodSubmit{
+    display: inline;
+    background-color: rgb(86, 6, 102);
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    position: absolute;
+    right: 24.5rem;
+    top: 39.3rem;
+    border: 0px;
+    transition: transform 0.2s, background-color 0.2s;
+
+
+}
+#moodSubmit:hover{
+    transform: scale(1.1);
+    background-color: rgb(63, 3, 75);
+    transition: transform 0.2s, background-color 0.2s;
+
+
+}
+
+.close {
+    color: #000000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    left: 0rem;
+    top: -4.5rem;
+  }
+
+  .mapClose{
+    width: 100%;
+    background-color: rgb(86, 6, 102);
+    color: white;
+    border: 0;
+    padding: 0.2rem;
+    cursor: pointer;
+  }
+
+
+
+
 .ethnicElementImageContainer{
     position: relative;
     display: flex;
@@ -1476,6 +1622,17 @@ input[type="email"] {
     display: none;
     pointer-events: all;
   }
+  .popupBg2{
+    width: 100%;
+    height: 100%;
+    background-color: #000000b0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 150;
+    display: none;
+    pointer-events: all;
+  }
   .lcontainer {
     width: 300px;
     margin: 8px auto;
@@ -1712,8 +1869,40 @@ input[type="email"] {
     <p id="error-message"></p>
 </div>
 
-       
     <div class="container">
+
+        <div method="GET" class = 'moodPlacesInputContainer'>
+            <!-- <label for="location">Current Location:</label> -->
+        <!-- <input type="text" id="location" name="location" required><br><br> -->
+            
+            <label for="mood">Your Mood:</label>
+            <select id="mood" name="mood" required  style = 'display: inline;'>
+                <option value="refreshing">Refreshing</option>
+                <option value="sadness">Sadness</option>
+                <option value="love">Love</option>
+                <option value="happiness">Happiness</option>
+            </select><br><br>
+            
+            <button id = 'moodSubmit' onclick = 'showMoodPlacesPopup()'>Find Places</button>
+        </div>
+
+
+        <div class = 'popupBg2'></div>
+        <div class = moodPlacesContainer>
+        <h1>Places to Visit</h1>
+        <span class="close">&times;</span>
+        <div id="places-list"></div>
+    
+        <div id="map-popup">
+            <button class = 'mapClose' onclick="closeMap()">Close Map</button>
+            <iframe id="map-iframe" src="" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        </div>
+
+
+
+
+
         <h1>Explore Personalized Suggestions:</h1>
         <div class="tabs">
             <div class="tab active" data-target="amusing">
@@ -1986,6 +2175,9 @@ input[type="email"] {
 
     <script>
             
+    let addedLocationsArray = [];
+    sessionStorage.setItem('addedLocationsArray', JSON.stringify(addedLocationsArray));
+
 
 // Landing page----------------------------------------------------------------------
 
@@ -2051,6 +2243,69 @@ document.addEventListener('DOMContentLoaded', function () {
         popupBg.style.display = 'none';
         popupBg.pointerEvents = 'none';
     });
+
+
+
+    //MoodBased js
+    let closeMoodPopup = document.querySelector('.close');
+    let moodPlacesContainer = document.querySelector('.moodPlacesContainer');
+    let moodInput = document.querySelector('#mood');
+    let popupBg2 = document.querySelector('.popupBg2');
+
+    const places = {
+    sadness: [
+        { name: "Princep Ghat", mapSrc: `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.6106084863686!2d88.32620438885498!3d22.5562549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02777bc7fbd5a3%3A0xe130198bbf63b7f1!2sPrinsep%20Ghat%201!5e0!3m2!1sen!2sin!4v1725399065153!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"` },
+        { name: "Dakshineswar Kali Temple", mapSrc: `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.9692661983586!2d88.35516210985656!3d22.654934479347364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89d03ddd97829%3A0xffa380efed305d4c!2sDakshineswar%20Kali%20Temple!5e0!3m2!1sen!2sin!4v1725399121019!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"` }
+    ],
+    refreshing: [
+        { name: "Rabindra Sarobar Lake", mapSrc: `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3685.7849667478526!2d88.36139560985131!3d22.512249679449376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02712a69e0c4ab%3A0x42adeb47a2d1245!2sRabindra%20Sarobar!5e0!3m2!1sen!2sin!4v1725399178907!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"` },
+        { name: "Yoga Centers", mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.262654264658!2d88.36389541448377!3d22.562629330239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277e90730b8d9%3A0xc2a9e4e761c84c8!2sThe%20Yoga%20Center!5e0!3m2!1sen!2sus!4v1691381743793" }
+    ],
+    love: [
+        { name: "Maidan", mapSrc: `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29477.43581432598!2d88.31742634440518!3d22.553676532824554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027771708da8f1%3A0x2b32c6b66be33ae!2sMaidan%2C%20New%20Market%20Area%2C%20Kolkata%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1725399224028!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"` },
+        { name: "Nandan", mapSrc: `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.7214213453262!2d88.3893077098569!3d22.66417297934076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89c320a7e166f%3A0x6c32295086f5397f!2sNandan%2C%20East%20Belgharia%2C%20Mandal%20Para%20Bat%20Tala%2C%20Belghoria%2C%20West%20Bengal%20700083!5e0!3m2!1sen!2sin!4v1725399263139!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"` }
+    ],
+    happiness: [
+        { name: "Victoria Memorial", mapSrc: `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58948.35890887661!2d88.30887308788422!3d22.568911878340533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02771346ae015d%3A0xb540e4bce39763!2sVictoria%20Memorial!5e0!3m2!1sen!2sin!4v1725399298507!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"` },
+        { name: "Science City", mapSrc: `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14739.855183827536!2d88.37888402848279!3d22.543028920833287!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0276a208cb6793%3A0x676bbf22d04354e8!2sScience%20City!5e0!3m2!1sen!2sin!4v1725399326724!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"` }
+    ]
+};
+
+function showMoodPlacesPopup() {
+    let mood = moodInput.value;
+    closeMap();
+    if (mood && places[mood]) {
+        const placesList = document.getElementById('places-list');
+        placesList.innerHTML = '';
+        places[mood].forEach(place => {
+            const button = document.createElement('button');
+            button.classList.add('popupButtonElement');
+            button.textContent = place.name;
+            button.onclick = () => showMap(place.mapSrc);
+            placesList.appendChild(button);
+        });
+    }
+    moodPlacesContainer.style.display = 'block';
+    popupBg2.style.display = 'block';
+};
+
+function showMap(src) {
+    const mapPopup = document.getElementById('map-popup');
+    const mapIframe = document.getElementById('map-iframe');
+    mapIframe.src = src;
+    mapPopup.style.display = 'block';
+}
+
+function closeMap() {
+    const mapPopup = document.getElementById('map-popup');
+    mapPopup.style.display = 'none';
+}
+
+closeMoodPopup.addEventListener('click', () => {
+    moodPlacesContainer.style.display = 'none';
+    popupBg2.style.display = 'none';
+
+});
 
     // Carousel Functionality---------------------------------------------------------------------
 

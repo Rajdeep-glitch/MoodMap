@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="practice.css">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maps Search</title>
+
+</head>
+
+<body background="back.jpg">
+  <div class="round">
+
+
+    <h1 id = summaryHeading>Summary</h1>
+
+    <div class="summaryContainer"></div>
+
+    <select id="location-dropdown">
+    </select>
+
+    <button id="confirm-view-map-btn">View on map</button>
+
+    <!-- <h3>History</h3>
+    <select id="history-dropdown">
+      <option value="" disabled selected>Select a location</option>
+    </select> -->
+
+    <ul id="location-list"></ul>
+
+    <div id="summary-popup" class="popup">
+      <div class="popup-content">
+        <span class="close">&times;</span>
+        <p id="location-summary"></p>
+        <!-- <button id="confirm-view-map-btn">View on Map</button> -->
+      </div>
+    </div>
+
+    <iframe id="map-iframe"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14743.04531533274!2d88.363895!3d22.572646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277bd1e1e0ec5%3A0xdbc1f05d83db2bdf!2sKolkata%2C%20West%20Bengal%2C%20India!5e0!3m2!1sen!2sus!4v1691381743793!5m2!1sen!2sus"
+      width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <script src="practice.js"></script>
+  </div>
+</body>
+
+</html>
